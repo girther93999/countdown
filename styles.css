@@ -50,13 +50,21 @@ body {
   font-size: 0.8rem;
 }
 
+.top-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
 .social {
   color: var(--muted);
   letter-spacing: 0.14em;
 }
 
 .social:hover,
-.social:focus-visible {
+.social:focus-visible,
+.wordmark:hover,
+.wordmark:focus-visible {
   color: var(--fg);
   outline: none;
 }
