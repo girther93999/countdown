@@ -61,18 +61,23 @@ body {
   outline: none;
 }
 
-.site-link {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 0.78rem;
+.store-line {
+  margin: 0;
+  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
+  color: var(--muted);
 }
 
-.site-link:hover,
-.site-link:focus-visible {
+.store-line a {
   color: var(--fg);
   text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.store-line a:hover,
+.store-line a:focus-visible {
+  opacity: 0.75;
   outline: none;
 }
 
