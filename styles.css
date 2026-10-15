@@ -50,22 +50,29 @@ body {
   font-size: 0.8rem;
 }
 
-.top-links {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-}
-
 .social {
   color: var(--muted);
   letter-spacing: 0.14em;
 }
 
 .social:hover,
-.social:focus-visible,
-.wordmark:hover,
-.wordmark:focus-visible {
+.social:focus-visible {
   color: var(--fg);
+  outline: none;
+}
+
+.site-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.site-link:hover,
+.site-link:focus-visible {
+  color: var(--fg);
+  text-decoration: underline;
   outline: none;
 }
 
