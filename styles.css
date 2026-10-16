@@ -591,66 +591,116 @@ body {
 }
 
 @media (max-width: 680px) {
-  /* Push the busy baked-in artwork text up and cover it with a stronger fade */
+  /* Stack on mobile: full poster fit to width up top, content on black below */
+  .site,
+  .final-stage,
+  .live-stage {
+    display: flex;
+    flex-direction: column;
+    background: #000;
+  }
+
   .site-bg,
   .final-bg,
   .live-bg {
-    object-position: center 28%;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    max-height: 56dvh;
+    object-fit: contain;
+    object-position: center top;
+    transform: none;
+    animation: none;
+    flex: none;
   }
 
+  /* No gradient needed — content sits on solid black */
   .site-scrim,
   .final-scrim,
   .live-scrim {
-    background:
-      linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.97) 0%,
-        rgba(0, 0, 0, 0.92) 30%,
-        rgba(0, 0, 0, 0.55) 52%,
-        rgba(0, 0, 0, 0.2) 74%,
-        rgba(0, 0, 0, 0.5) 100%
-      );
+    display: none;
   }
 
-  .site-content,
-  .final-frame,
-  .live-content {
-    gap: 0.9rem;
-    padding: 1.5rem 1.25rem calc(1.75rem + env(safe-area-inset-bottom));
+  /* Poster already shows the EMOTOHI wordmark, so hide the duplicate */
+  .site-mark,
+  .final-mark,
+  .live-mark {
+    display: none;
   }
 
   .site-topbar,
   .final-topbar,
   .live-topbar {
-    padding: 1.1rem 1.25rem calc(1.1rem + env(safe-area-inset-top));
+    position: absolute;
+    top: 0;
+    left: auto;
+    right: 0;
+    justify-content: flex-end;
+    padding: 0.85rem 1rem calc(0.85rem + env(safe-area-inset-top));
+  }
+
+  .site-content,
+  .final-frame,
+  .live-content {
+    position: relative;
+    inset: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 1.5rem 1.25rem calc(2rem + env(safe-area-inset-bottom));
+  }
+
+  .site-eyebrow,
+  .final-label {
+    text-indent: 0;
   }
 
   .timer {
-    gap: 0.45rem;
     width: 100%;
+    max-width: 22rem;
     justify-content: space-between;
+    gap: 0.4rem;
   }
 
   .sep {
     display: none;
   }
 
+  .block {
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+  }
+
   .num {
-    font-size: clamp(2rem, 15vw, 3.2rem);
+    font-size: clamp(2rem, 14vw, 3.2rem);
   }
 
   .unit {
     font-size: 0.5rem;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
   }
 
-  .block {
-    min-width: 0;
-    flex: 1;
+  .final-num {
+    font-size: clamp(5rem, 34vw, 9rem);
+  }
+
+  .final-bar {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .live-headline {
-    font-size: clamp(3rem, 18vw, 5.5rem);
+    font-size: clamp(2.8rem, 15vw, 4.5rem);
+  }
+
+  .live-actions {
+    justify-content: center;
   }
 }
 
