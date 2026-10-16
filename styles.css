@@ -591,116 +591,68 @@ body {
 }
 
 @media (max-width: 680px) {
-  /* Stack on mobile: full poster fit to width up top, content on black below */
-  .site,
-  .final-stage,
-  .live-stage {
-    display: flex;
-    flex-direction: column;
-    background: #000;
-  }
-
+  /* Keep full-bleed (no blank space); zoom to a balanced crop */
   .site-bg,
   .final-bg,
   .live-bg {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: auto;
-    max-height: 56dvh;
-    object-fit: contain;
-    object-position: center top;
-    transform: none;
-    animation: none;
-    flex: none;
+    object-position: center 32%;
   }
 
-  /* No gradient needed — content sits on solid black */
+  /* Strong bottom fade hides the baked-in artwork text behind the countdown */
   .site-scrim,
   .final-scrim,
   .live-scrim {
-    display: none;
-  }
-
-  /* Poster already shows the EMOTOHI wordmark, so hide the duplicate */
-  .site-mark,
-  .final-mark,
-  .live-mark {
-    display: none;
-  }
-
-  .site-topbar,
-  .final-topbar,
-  .live-topbar {
-    position: absolute;
-    top: 0;
-    left: auto;
-    right: 0;
-    justify-content: flex-end;
-    padding: 0.85rem 1rem calc(0.85rem + env(safe-area-inset-top));
+    background:
+      linear-gradient(
+        to top,
+        #000 0%,
+        rgba(0, 0, 0, 0.98) 26%,
+        rgba(0, 0, 0, 0.8) 40%,
+        rgba(0, 0, 0, 0.3) 62%,
+        rgba(0, 0, 0, 0.15) 80%,
+        rgba(0, 0, 0, 0.5) 100%
+      );
   }
 
   .site-content,
   .final-frame,
   .live-content {
-    position: relative;
-    inset: auto;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 1rem;
-    padding: 1.5rem 1.25rem calc(2rem + env(safe-area-inset-bottom));
+    gap: 0.85rem;
+    padding: 1.4rem 1.1rem calc(1.75rem + env(safe-area-inset-bottom));
   }
 
-  .site-eyebrow,
-  .final-label {
-    text-indent: 0;
+  .site-topbar,
+  .final-topbar,
+  .live-topbar {
+    padding: 1rem 1.1rem calc(1rem + env(safe-area-inset-top));
   }
 
+  /* Keep the colon separators, just size everything to fit */
   .timer {
     width: 100%;
-    max-width: 22rem;
-    justify-content: space-between;
-    gap: 0.4rem;
-  }
-
-  .sep {
-    display: none;
+    gap: 0.25rem;
   }
 
   .block {
-    align-items: center;
     flex: 1;
     min-width: 0;
   }
 
   .num {
-    font-size: clamp(2rem, 14vw, 3.2rem);
+    font-size: clamp(1.9rem, 12vw, 3rem);
   }
 
   .unit {
-    font-size: 0.5rem;
-    letter-spacing: 0.16em;
+    font-size: 0.48rem;
+    letter-spacing: 0.12em;
   }
 
-  .final-num {
-    font-size: clamp(5rem, 34vw, 9rem);
-  }
-
-  .final-bar {
-    margin-left: auto;
-    margin-right: auto;
+  .sep {
+    font-size: clamp(1.5rem, 8vw, 2.4rem);
   }
 
   .live-headline {
-    font-size: clamp(2.8rem, 15vw, 4.5rem);
-  }
-
-  .live-actions {
-    justify-content: center;
+    font-size: clamp(3rem, 16vw, 5rem);
   }
 }
 
