@@ -7,60 +7,20 @@
   <meta name="description" content="EMOTOHI clothing drop. Friday 10.16.26 · 12:00 AM HST." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="vendor/fireworks.umd.js"></script>
 </head>
 <body>
-  <div class="site">
-    <header class="top">
-      <span class="wordmark">EMOTOHI</span>
-      <a class="social" href="https://www.tiktok.com/@emotohi.com" target="_blank" rel="noopener noreferrer">TikTok</a>
-    </header>
+  <div class="site" id="site">
+    <img class="site-bg" src="EMOTOHI Clothing Drop Teaser.png" alt="EMOTOHI clothing drop teaser" decoding="async" fetchpriority="high" />
+    <div class="site-scrim" aria-hidden="true"></div>
 
-    <figure class="poster">
-      <img
-        src="EMOTOHI Clothing Drop Teaser.png"
-        alt="EMOTOHI clothing drop teaser"
-        width="1920"
-        height="1080"
-        decoding="async"
-        fetchpriority="high"
-      />
-    </figure>
-
-    <section class="release" aria-label="Drop details">
-      <p class="kicker">Dropping in</p>
-
-      <p class="when">
-        <time datetime="2026-10-16T00:00:00-10:00">Friday 10.16.26</time>
-        · 12:00 AM HST
-      </p>
-
-      <div class="timer" id="countdown" role="timer" aria-live="polite" aria-atomic="true">
-        <div class="block">
-          <span class="num" data-unit="days">00</span>
-          <span class="unit">Days</span>
-        </div>
-        <div class="block">
-          <span class="num" data-unit="hours">00</span>
-          <span class="unit">Hours</span>
-        </div>
-        <div class="block">
-          <span class="num" data-unit="mins">00</span>
-          <span class="unit">Mins</span>
-        </div>
-        <div class="block">
-          <span class="num" data-unit="secs">00</span>
-          <span class="unit">Secs</span>
-        </div>
-      </div>
-
-      <p class="store-line">
-        Go back to
-        <a href="https://emotohi.com" target="_blank" rel="noopener noreferrer">emotohi.com</a>
-      </p>
-
-      <div class="tools">
+    <header class="site-topbar">
+      <span class="site-mark">EMOTOHI</span>
+      <div class="site-top-right">
+        <a class="site-social" href="https://www.tiktok.com/@emotohi.com" target="_blank" rel="noopener noreferrer">TikTok</a>
         <button class="mute" id="muteBtn" type="button" aria-pressed="false" aria-label="Mute" title="Mute">
           <svg class="vol-on" viewBox="0 0 24 24" aria-hidden="true">
             <path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
@@ -70,7 +30,70 @@
           </svg>
         </button>
       </div>
+    </header>
+
+    <section class="site-content" aria-label="Drop details">
+      <p class="site-eyebrow">Dropping in</p>
+
+      <div class="timer" id="countdown" role="timer" aria-live="polite" aria-atomic="true">
+        <div class="block">
+          <span class="num" data-unit="days">00</span>
+          <span class="unit">Days</span>
+        </div>
+        <span class="sep" aria-hidden="true">:</span>
+        <div class="block">
+          <span class="num" data-unit="hours">00</span>
+          <span class="unit">Hours</span>
+        </div>
+        <span class="sep" aria-hidden="true">:</span>
+        <div class="block">
+          <span class="num" data-unit="mins">00</span>
+          <span class="unit">Mins</span>
+        </div>
+        <span class="sep" aria-hidden="true">:</span>
+        <div class="block">
+          <span class="num" data-unit="secs">00</span>
+          <span class="unit">Secs</span>
+        </div>
+      </div>
     </section>
+  </div>
+
+  <div class="final-stage" id="finalStage" hidden>
+    <img class="final-bg" src="EMOTOHI Clothing Drop Teaser.png" alt="" aria-hidden="true" />
+    <div class="final-scrim" aria-hidden="true"></div>
+
+    <div class="final-topbar">
+      <span class="final-mark">EMOTOHI</span>
+    </div>
+
+    <div class="final-frame">
+      <p class="final-label" id="finalLabel">Dropping in</p>
+      <div class="final-num" id="finalNum">30</div>
+      <div class="final-bar" aria-hidden="true"><span id="finalBarFill"></span></div>
+    </div>
+  </div>
+
+  <div id="fwHost" class="fw-host" aria-hidden="true"></div>
+
+  <div class="live-stage" id="liveStage" hidden>
+    <img class="live-bg" src="EMOTOHI Clothing Drop Teaser.png" alt="" aria-hidden="true" />
+    <div class="live-scrim" aria-hidden="true"></div>
+
+    <div class="live-topbar">
+      <span class="live-mark">EMOTOHI</span>
+      <span class="live-pin"><span class="live-dot"></span>Live now</span>
+    </div>
+
+    <div class="live-content">
+      <h1 class="live-headline">The drop<br />is live.</h1>
+      <div class="live-actions">
+        <a class="live-cta" href="https://emotohi.com" target="_blank" rel="noopener noreferrer">
+          Shop the drop
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
